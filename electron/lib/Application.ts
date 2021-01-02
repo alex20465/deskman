@@ -1,4 +1,5 @@
 import { app } from "electron";
+import { ConfigurationManager } from "./ConfigurationManager";
 import SystemTrayManager, { SYSTEM_COMMANDS } from "./SystemTrayManager";
 import WindowManager from "./WindowManager";
 
@@ -11,13 +12,17 @@ export default class Application {
 
     private systemTrayManager: SystemTrayManager;
 
+    private config: ConfigurationManager;
+
     constructor() {
+        this.config = new ConfigurationManager();
+
         this.windowManager = new WindowManager({
             httpHost: 'localhost',
             httpPort: 3000,
             httpLoad: NODE_ENV === 'development'
         });
-        this.systemTrayManager = new SystemTrayManager();
+        this.systemTrayManager = new SystemTrayManager(this.config);
     }
 
     public load() {

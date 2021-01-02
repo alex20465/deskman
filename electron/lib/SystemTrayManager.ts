@@ -1,6 +1,7 @@
 import { Menu, Tray, globalShortcut } from "electron";
 import { EventEmitter } from "events";
 import { join } from "path";
+import { ConfigurationManager } from "./ConfigurationManager";
 
 export enum SYSTEM_COMMANDS {
     OPEN = 0,
@@ -13,15 +14,14 @@ export default class SystemTrayManager {
 
     private tray: Tray;
 
-    constructor() {
+    constructor(private config: ConfigurationManager) {
         this.tray = new Tray(join(__dirname, '..', '..', 'logo192.png'))
     }
 
     public load() {
         this.tray.setContextMenu(this.getMenu());
-
-        globalShortcut.register('Ctrl+Shift+a', () => {
-            console.log("shortcut accepted");
+        globalShortcut.register(this.config.shortcuts.open, () => {
+            this.emitter.emit(`${SYSTEM_COMMANDS.OPEN}`);
         });
     }
 
