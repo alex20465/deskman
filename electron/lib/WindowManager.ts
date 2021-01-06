@@ -24,14 +24,14 @@ export default class WindowManager {
 
     constructor(options: WindowManagerOptions = {}) {
         this.window = new BrowserWindow({
-            width: 500,
-            height: 400,
-            movable: false,
-            skipTaskbar: true,
-            frame: false,
-            alwaysOnTop: true,
+            //width: 500,
+            //height: 400,
+            //movable: false,
+            //skipTaskbar: true,
+            //frame: false,
+            //alwaysOnTop: true,
             show: false,
-            closable: false,
+            //closable: false,
         });
 
         const { httpHost = 'localhost', httpLoad = false, httpPort = 3000 } = options;
