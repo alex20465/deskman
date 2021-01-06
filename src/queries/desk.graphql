@@ -1,0 +1,12 @@
+query getDefaultDesk {
+  desk(profile:"default") {
+    name
+    profile
+    state {
+      cm
+      inch
+      value
+      speed
+    }
+  }
+}

@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Button, Typography } from 'antd';
-import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-} from '@ant-design/icons';
+import { Layout } from 'antd';
 
-const { Header, Sider, Content } = Layout;
+const { Content } = Layout;
 
 interface Props {
 

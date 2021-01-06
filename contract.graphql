@@ -1,0 +1,56 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type DiscoveredDevice {
+  name: String!
+  address: String!
+}
+
+type DeskModelItem {
+  name: String!
+  services: [String!]!
+  cls: String!
+}
+
+type DeskState {
+  cm: Float!
+  inch: Float!
+  value: Float!
+  speed: Float!
+}
+
+type Desk {
+  profile: ID!
+  name: String!
+  address: String!
+  state: DeskState!
+}
+
+type Query {
+  desk(profile: String!): Desk!
+  models: [DeskModelItem!]!
+  discoveredDevices(model: String!): [DiscoveredDevice!]!
+}
+
+type Mutation {
+  connectDevice(address: String!, modelName: String!, profile: String!): Boolean!
+  up(profile: String!): DeskState!
+  down(profile: String!): DeskState!
+  to(input: DeskMoverInput!, profile: String!): Boolean!
+}
+
+input DeskMoverInput {
+  position: Float!
+  unit: LENGTH_UNITS!
+}
+
+enum LENGTH_UNITS {
+  CM
+  DESK
+  INC
+}
+
+type Subscription {
+  stateChange(profile: String!): DeskState!
+}

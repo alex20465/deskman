@@ -1,0 +1,12 @@
+overwrite: true
+schema: contract.graphql
+documents: "src/queries/**/*.graphql"
+generates:
+  src/models.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
+      withHOC: true
