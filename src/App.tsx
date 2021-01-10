@@ -1,13 +1,14 @@
 import './App.css';
 import 'antd/dist/antd.css';
-import BaseLayout from './layouts/BaseLayout';
+import Router from './Router';
+import { HashRouter as BrowserRouter } from 'react-router-dom';
 
 
 function App() {
   return (
-    <BaseLayout>
-        labla
-    </BaseLayout>
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
   );
 }
 

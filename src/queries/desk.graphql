@@ -10,3 +10,24 @@ query getDefaultDesk {
     }
   }
 }
+
+mutation moveUp {
+  up(profile: "default") {
+    speed
+  }
+}
+
+mutation moveDown {
+  down(profile: "default") {
+    speed
+  }
+}
+
+subscription state {
+  stateChange(profile:"default") {
+    cm,
+    inch,
+    value,
+    speed
+  }
+}

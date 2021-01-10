@@ -4,6 +4,7 @@
   "private": true,
   "main": "build/electron/main.js",
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "@apollo/client": "^3.3.6",
     "@apollo/react-hoc": "^4.0.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -15,6 +16,7 @@
     "@types/react-dom": "^16.9.8",
     "@types/recompose": "^0.30.7",
     "antd": "^4.10.0",
+    "apollo-link-ws": "^1.0.20",
     "data-store": "^4.0.3",
     "graphql": "^15.4.0",
     "graphql-tag": "^2.11.0",
@@ -23,11 +25,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "recompose": "^0.30.0",
+    "subscriptions-transport-ws": "^0.9.18",
     "typescript": "^4.0.3",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start:electron": "NODE_ENV='development' electron .",
+    "start:electron:prod": "NODE_ENV='production' electron .",
     "start:react": "BROWSER=none react-scripts start",
     "start": "concurrently 'yarn start:react' 'yarn start:electron'",
     "build:react": "PUBLIC_URL='.' react-scripts build",

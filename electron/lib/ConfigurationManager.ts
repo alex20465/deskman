@@ -15,13 +15,17 @@ interface ShortcutsConfig {
 }
 
 interface Configurations {
-    shortcuts: ShortcutsConfig
+    shortcuts: ShortcutsConfig,
+    endpoint: string,
+    trusted: string[]
 }
 
 const DEFAULT_CONFIG: Configurations = {
+    endpoint: "",
     shortcuts: {
         open: "Ctrl+Shift+a"
-    }
+    },
+    trusted: []
 }
 
 export class ConfigurationManager {
@@ -37,8 +41,28 @@ export class ConfigurationManager {
         return this.get('shortcuts');
     }
 
+    get trusted(): string[] {
+        return this.get('trusted');
+    }
+
+    get endpoint(): string | null {
+        return this.get('endpoint') || null;
+    }
+
+    isTrusted(fingerprint: string) {
+        return this.trusted.indexOf(fingerprint) !== -1;
+    }
+
+    trust(fingerprint: string) {
+        this.set('trusted', [...this.trusted, fingerprint]);
+    }
+
     async delete() {
         unlinkSync(this.path);
+    }
+
+    private set(name: string, value: any) {
+        this.store.set(name, value);
     }
 
     private get(name: string) {

@@ -1,7 +1,7 @@
 import { app } from 'electron';
 import Application from './lib/Application';
 
-app.on('ready', () => {
+app.on('ready', async () => {
     const application = new Application();
-    application.load();
+    await application.load();
 });
