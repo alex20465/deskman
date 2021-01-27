@@ -33,7 +33,7 @@ export class ConfigurationManager {
     private path: string;
 
     constructor() {
-        this.path = join(homedir(), ".config", 'example-app');
+        this.path = join(homedir(), ".config", 'deskman');
         this.store = DataStore({ path: this.path });
     }
 
